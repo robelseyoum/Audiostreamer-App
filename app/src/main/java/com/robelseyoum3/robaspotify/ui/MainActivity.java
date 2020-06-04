@@ -8,6 +8,7 @@ import android.widget.ProgressBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.robelseyoum3.robaspotify.R;
+import com.robelseyoum3.robaspotify.models.Artist;
 
 public class MainActivity extends AppCompatActivity implements IMainActivity
 {
@@ -26,7 +27,8 @@ public class MainActivity extends AppCompatActivity implements IMainActivity
         setContentView(R.layout.activity_main);
         mProgressBar = findViewById(R.id.progress_bar);
 //        testHomeFragment();
-        testCategoryFragment();
+//        testCategoryFragment();
+        testPlaylistFragment();
     }
 
     private void testCategoryFragment() {
@@ -37,6 +39,16 @@ public class MainActivity extends AppCompatActivity implements IMainActivity
     private void testHomeFragment() {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.main_container, com.robelseyoum3.robaspotify.ui.HomeFragment.newInstance()).commit();
+    }
+
+    private void testPlaylistFragment(){
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main_container,
+                        PlaylistFragment.newInstance("Podcasts",
+                                new Artist("CodingWithMitch",
+                                        "https://assets.blubrry.com/coverart/orig/654497-584077.png",
+                                        "m2BE0t4z0raEqqqgHXj4")
+                        )).commit();
     }
 
 
